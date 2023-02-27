@@ -1,14 +1,17 @@
+
 class APIHandler {
   constructor (baseUrl) {
     this.BASE_URL = baseUrl;
   }
 
-  getFullList () {
-
+  async getFullList () {
+    const res = await axios.get(this.BASE_URL + "/characters")
+    return res.data
   }
 
-  getOneRegister () {
-
+  async getOneRegister (id) {
+    const res = await axios.get(this.BASE_URL + "/characters/" + id)
+    return res.data
   }
 
   createOneRegister () {

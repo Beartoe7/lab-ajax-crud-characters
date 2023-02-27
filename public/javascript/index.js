@@ -1,28 +1,28 @@
-const charactersAPI = new APIHandler('http://localhost:8001');
+const charactersAPI = new APIHandler('http://localhost:8000');
 
 window.addEventListener('load', () => {
-  
+
   document.getElementById('fetch-all').addEventListener('click', function () {
-    charactersAPI.getFullList().then((allCharacters)=> {
+    charactersAPI.getFullList().then((allCharacters) => {
       const parentDiv = document.querySelector(".characters-container");
       const hiddenDivOnFetch = document.getElementById(
-        "character-info-to-hide"
+        "boilerplate"
       );
-    allCharacters.forEach((character)=> {
-      let oneCharacter = document.createElement("div");
-      oneCharacter.className = "character-info";
+      allCharacters.forEach((character) => {
+        let oneCharacter = document.createElement("div");
+        oneCharacter.className = "character-info";
 
-      //Mostrar nombre
-      let newDivName = document.createElement("div");
-      newDivName.classList.add("name");
-      newDivName.innerHTML = `Name: ${character.name}`;
-      oneCharacter.appendChild(newDivName);
+        //Mostrar nombre
+        let newDivName = document.createElement("div");
+        newDivName.classList.add("name");
+        newDivName.innerHTML = `Name: ${character.name}`;
+        oneCharacter.appendChild(newDivName);
 
-      parentDiv.appendChild(oneCharacter);
-    });
+        parentDiv.appendChild(oneCharacter);
+      });
     hiddenDivOnFetch.style.display = "none";
+    });
   });
-});
 
   document.getElementById('fetch-one').addEventListener('click', function (event) {
 
